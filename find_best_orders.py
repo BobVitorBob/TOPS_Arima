@@ -78,13 +78,14 @@ for sub_folder in sub_folders:
         mae_treino = mae(prediction_series, predictions)
         mse_treino = mse(prediction_series, predictions)
         rmse_treino = rmse(prediction_series, predictions)
- 
-        model.fit(test_series)
-        predictions = model.predict_in_sample()
-        mae_teste = mae(test_series, predictions)
-        mse_teste = mse(test_series, predictions)
-        rmse_teste = rmse(test_series, predictions)
-
+        test_predictions = []
+        for leitura in test_series:
+          test_predictions.append(model.predict(1)[0])
+          model.update([leitura])
+        mae_teste = mae(test_series, test_predictions)
+        mse_teste = mse(test_series, test_predictions)
+        rmse_teste = rmse(test_series, test_predictions)
+        plot(np.concatenate((prediction_series, test_series)), divisions=[len(prediction_series)], sec_plots=[np.concatenate((predictions, test_predictions))])
         # Adiciona os valores relevantes num dataframe
         dataframe['nome'].append(test_file[:-9])
         dataframe['modelo'].append(str(model))
