@@ -52,8 +52,7 @@ def plot(vals, labels=None, detected_anomalies=[], continuous_anomalies=[], marg
   )
   j = 0
   if margins:
-    for margin in margins:
-      plt.fill_between(range(len(vals)), margin[0], margin[1], alpha = 0.1, color="b")
+    plt.fill_between(range(len(vals)), margins[0], margins[1], alpha = 0.1, color="b")
   fig.tight_layout()
   if save:
     fig.savefig(img_name if img_name is not None else title, bbox_inches='tight')
