@@ -85,9 +85,9 @@ for sub_folder in sub_folders:
         mae_teste = mae(test_series, test_predictions)
         mse_teste = mse(test_series, test_predictions)
         rmse_teste = rmse(test_series, test_predictions)
-        plot(np.concatenate((prediction_series, test_series)), divisions=[len(prediction_series)], sec_plots=[np.concatenate((predictions, test_predictions))])
+        plot(np.concatenate((prediction_series, test_series)), divisions=[len(prediction_series)], sec_plots=[np.concatenate((predictions, test_predictions))], save=True, show=False, img_name=f'./imagens/{sub_folder}_{provider}_{data_length}_{str(model)}.jpeg', )
         # Adiciona os valores relevantes num dataframe
-        dataframe['nome'].append(test_file[:-9])
+        dataframe['nome'].append(f'{sub_folder}_{provider}_{data_length}')
         dataframe['modelo'].append(str(model))
         dataframe['mae_treino'].append(f'{mae_treino:.3f}')
         dataframe['mae_teste'].append(f'{mae_teste:.3f}')
