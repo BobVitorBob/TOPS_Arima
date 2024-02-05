@@ -1,12 +1,8 @@
 
 from plot import plot
-from statsmodels.tsa.arima.model import ARIMA
 from pmdarima import arima
 import pandas as pd
 import numpy as np
-from scipy.stats import boxcox
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import os
 import re
 
